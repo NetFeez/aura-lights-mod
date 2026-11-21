@@ -1,6 +1,6 @@
 id = "netfeez_aurora_lights"
 name = "Aurora Lights"
-version = "0.1.0"
+version = "0.1.1"
 description = "Dynamic glow for held and dropped light sources, optional colors, and a faint violet halo for enchanted gear."
 authors = ["NetFeez"]
 license = "Apache-2.0"
@@ -13,7 +13,7 @@ capabilities = ["registries"]
 
 [native]
 game = "26.3"
-horizon = "0a875da91dbb0fdcb7ba8c42c11341aa229af51a"
+horizon = "f037744a79f9982c47876f49c5a3067279f88706"
 mixins = "e59da9094f0c2fdda6c627fe9eff22dec6a906f0"
 
 [[native.mixin]]

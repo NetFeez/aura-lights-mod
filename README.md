@@ -8,11 +8,24 @@ Companion shader repo: https://github.com/netfeez/aura-bloom-shader
 
 ## Installation
 
-1. Build or download the `.hmod` from this repo.
-2. Copy it into the `mods` folder of your Horizon instance and enable it.
-3. As a native mod, the launcher will ask you to trust the code before running it.
+Download `netfeez_aurora_lights-0.1.1.hmod` and its `.minisig` from the
+[v0.1.1 release](https://github.com/NetFeez/aura-lights-mod/releases/tag/v0.1.1). You can also add
+this repository's URL in the launcher's **Add a native mod from GitHub** field: native mods are the
+only kind that field accepts.
+
+1. Copy the `.hmod` into the `mods` folder of your Horizon instance and enable it.
+2. As a native mod, the launcher will ask you to trust the Rust source before building it.
 
 The mod id is `netfeez_aurora_lights`.
+
+### Which Horizon build
+
+Version 0.1.1 is pinned to Horizon `f037744a79f9982c47876f49c5a3067279f88706` and Mixins
+`e59da9094f0c2fdda6c627fe9eff22dec6a906f0`: the **Nov 21, 16:57 UTC Nightly**. If the launcher
+says "Made for the Nov 21 update; you play the Nov 20 update", you are on an older Nightly; use the
+[v0.1.0 release](https://github.com/NetFeez/aura-lights-mod/releases/tag/v0.1.0), which is pinned to
+the Nov 20 build. The launcher can build a native mod for another build when the API surface it uses
+has not changed, but using the matching version avoids the warning.
 
 ## Settings
 

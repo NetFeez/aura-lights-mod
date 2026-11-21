@@ -9,11 +9,24 @@ Repo del shader complementario: https://github.com/netfeez/aura-bloom-shader
 
 ## Instalación
 
-1. Construye o descarga el archivo `.hmod` de este repo.
-2. Cópialo en la carpeta `mods` de tu instancia de Horizon y habilítalo.
-3. Como es un mod nativo, el launcher pedirá confiar en el código antes de ejecutarlo.
+Descarga `netfeez_aurora_lights-0.1.1.hmod` y su `.minisig` del
+[release v0.1.1](https://github.com/NetFeez/aura-lights-mod/releases/tag/v0.1.1). También puedes
+añadir la URL de este repo en el campo **Add a native mod from GitHub** del launcher: los mods
+nativos son el único tipo que acepta ese campo.
+
+1. Copia el `.hmod` en la carpeta `mods` de tu instancia de Horizon y habilítalo.
+2. Como es un mod nativo, el launcher pedirá confiar en el código Rust antes de compilarlo.
 
 El id del mod es `netfeez_aurora_lights`.
+
+### Versión de Horizon compatible
+
+La versión 0.1.1 está fijada a Horizon `f037744a79f9982c47876f49c5a3067279f88706` y Mixins
+`e59da9094f0c2fdda6c627fe9eff22dec6a906f0`: la **Nightly del 21 de nov a las 16:57 UTC**. Si el
+launcher dice «Hecho para la actualización del 21 de nov; juegas la del 20 de nov», estás en una
+Nightly anterior; usa el [release v0.1.0](https://github.com/NetFeez/aura-lights-mod/releases/tag/v0.1.0),
+fijado a la compilación del 20 de nov. El launcher puede compilar un mod nativo para otra revisión
+cuando la API que usa no ha cambiado, pero usar la versión correspondiente evita el aviso.
 
 ## Ajustes
 
