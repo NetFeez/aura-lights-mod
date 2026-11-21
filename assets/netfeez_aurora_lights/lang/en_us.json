@@ -1,0 +1,14 @@
+{
+  "netfeez_aurora_lights.setting.other_players": "Other players",
+  "netfeez_aurora_lights.setting.dropped_items": "Dropped Items",
+  "netfeez_aurora_lights.setting.light_colors": "Light colors",
+  "netfeez_aurora_lights.setting.enchanted_glow": "Enchanted glow",
+  "netfeez_aurora_lights.setting.item_frames": "Item frames",
+  "netfeez_aurora_lights.setting.on": "On",
+  "netfeez_aurora_lights.setting.off": "Off",
+  "netfeez_aurora_lights.setting.other_players.tooltip": "Shows held-item glow for nearby players.",
+  "netfeez_aurora_lights.setting.dropped_items.tooltip": "Shows glow for replicated dropped glowing items. Works without a server-side mod.",
+  "netfeez_aurora_lights.setting.light_colors.tooltip": "Tints this mod's glow and, with the companion shader pack selected, colored block light.",
+  "netfeez_aurora_lights.setting.enchanted_glow.tooltip": "Adds a faint violet halo around enchanted items, armor and framed items.",
+  "netfeez_aurora_lights.setting.item_frames.tooltip": "Shows glow for luminous items displayed in item frames."
+}

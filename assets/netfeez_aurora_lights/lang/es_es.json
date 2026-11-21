@@ -1,0 +1,14 @@
+{
+  "netfeez_aurora_lights.setting.other_players": "Otros jugadores",
+  "netfeez_aurora_lights.setting.dropped_items": "Objetos caídos",
+  "netfeez_aurora_lights.setting.light_colors": "Colores de luz",
+  "netfeez_aurora_lights.setting.enchanted_glow": "Brillo encantado",
+  "netfeez_aurora_lights.setting.item_frames": "Marcos de objetos",
+  "netfeez_aurora_lights.setting.on": "Activado",
+  "netfeez_aurora_lights.setting.off": "Desactivado",
+  "netfeez_aurora_lights.setting.other_players.tooltip": "Muestra el brillo de los objetos en mano de jugadores cercanos.",
+  "netfeez_aurora_lights.setting.dropped_items.tooltip": "Muestra el brillo de los objetos luminosos caídos replicados. Funciona sin un mod en el servidor.",
+  "netfeez_aurora_lights.setting.light_colors.tooltip": "Tiñe el brillo de este mod y, con el shader pack complementario seleccionado, la luz de bloque coloreada.",
+  "netfeez_aurora_lights.setting.enchanted_glow.tooltip": "Añade un halo violeta tenue alrededor de objetos encantados, armaduras y objetos en marcos.",
+  "netfeez_aurora_lights.setting.item_frames.tooltip": "Muestra el brillo de los objetos luminosos expuestos en marcos."
+}
