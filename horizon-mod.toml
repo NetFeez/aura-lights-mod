@@ -1,6 +1,6 @@
 id = "netfeez_aurora_lights"
 name = "Aurora Lights"
-version = "0.1.1"
+version = "0.1.3"
 description = "Dynamic glow for held and dropped light sources, optional colors, and a faint violet halo for enchanted gear."
 authors = ["NetFeez"]
 license = "Apache-2.0"
