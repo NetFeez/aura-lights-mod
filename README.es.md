@@ -9,8 +9,8 @@ Repo del shader complementario: https://github.com/netfeez/aura-bloom-shader
 
 ## Instalación
 
-Descarga `netfeez_aurora_lights-0.1.4.hmod` y su `.minisig` del
-[release v0.1.4](https://github.com/NetFeez/aura-lights-mod/releases/tag/v0.1.4). También puedes
+Descarga `netfeez_aurora_lights-0.1.5.hmod` y su `.minisig` del
+[release v0.1.5](https://github.com/NetFeez/aura-lights-mod/releases/tag/v0.1.5). También puedes
 añadir la URL de este repo en el campo **Add a native mod from GitHub** del launcher: los mods
 nativos son el único tipo que acepta ese campo.
 
@@ -21,19 +21,19 @@ El id del mod es `netfeez_aurora_lights`.
 
 ### Versión de Horizon compatible
 
-La versión 0.1.4 está fijada a Horizon `f037744a79f9982c47876f49c5a3067279f88706` y Mixins
-`e59da9094f0c2fdda6c627fe9eff22dec6a906f0`: la **Nightly del 21 de nov a las 16:57 UTC**. Si el
-launcher dice «Hecho para la actualización del 21 de nov; juegas la del 20 de nov», estás en una
-Nightly anterior; usa el [release v0.1.0](https://github.com/NetFeez/aura-lights-mod/releases/tag/v0.1.0),
-fijado a la compilación del 20 de nov. El launcher puede compilar un mod nativo para otra revisión
-cuando la API que usa no ha cambiado, pero usar la versión correspondiente evita el aviso.
+La versión 0.1.5 está fijada a Horizon `f1bb66f353cf67f2aa4665293fc75c8d91186fc7` y Mixins
+`e59da9094f0c2fdda6c627fe9eff22dec6a906f0`: la **Nightly del 22 de nov**. Si el launcher dice
+«Hecho para la actualización del 22 de nov; juegas la del 21 de nov», estás en una Nightly anterior;
+usa el [release v0.1.4](https://github.com/NetFeez/aura-lights-mod/releases/tag/v0.1.4), fijado a la
+compilación del 21 de nov. El launcher puede compilar un mod nativo para otra revisión cuando la API
+que usa no ha cambiado, pero usar la versión correspondiente evita el aviso.
 
-La versión 0.1.4 también equilibra las luces que se solapan: en lugar de sumarse en el mismo punto,
-se escalan para que el resultado se acerque a la fuente más brillante, conservando cada luz su color,
-radio y posición. Un halo encantado tenue ya no atenúa marcos ni objetos caídos cercanos, y una luz
-en mano más débil ya no apaga una más brillante. El id de entidad del jugador local se lee una vez por
-fotograma en lugar de resolver cada mob cacheado, para que los servidores concurridos sigan siendo
-lineales.
+La versión 0.1.5 conserva el comportamiento de 0.1.4: las luces que se solapan se escalan para que el
+resultado se acerque a la fuente más brillante, conservando cada luz su color, radio y posición. Un
+halo encantado tenue ya no atenúa marcos ni objetos caídos cercanos, una luz en mano más débil ya no
+apaga una más brillante, y el id de entidad del jugador local se lee una vez por fotograma en lugar de
+resolver cada mob cacheado, para que los servidores concurridos sigan siendo lineales. El cambio de
+SDK respecto a 0.1.4 es aditivo; no hicieron falta cambios de código.
 
 ## Ajustes
 
