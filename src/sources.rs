@@ -42,10 +42,6 @@ fn finite(at: [f64; 3]) -> bool {
     at.iter().all(|axis| axis.is_finite())
 }
 
-fn is_local(host: &dyn ClientHost, id: u32) -> bool {
-    let Some(entity) = host.entity(id) else { return false; };
-    host.local_player().is_some_and(|player| player.entity() == entity)
-}
 
 fn hand(stack: Option<(&str, bool)>) -> (Option<LightProfile>, bool) {
     match stack {
@@ -118,23 +114,38 @@ pub(crate) fn set_frames<'a>(
     }
 }
 
+/// Resolving each cached id through `host.entity(id)` scans the client's mob list, so doing it per
+/// source is quadratic in a crowded scene. The local player's id comes straight from its handle;
+/// read it once per frame and compare plain ids instead.
+fn emit_mobs(
+    mobs: &[HeldLight],
+    local: Option<u32>,
+    other_players: bool,
+    enchanted_glow: bool,
+    colors: bool,
+    out: &mut Vec<lights::Candidate>,
+) {
+    for source in mobs {
+        if local == Some(source.id) { continue; }
+        if source.is_player && !other_players { continue; }
+        if let Some(profile) = source.profile {
+            out.push(lights::profile(source.at, profile, colors, PRIORITY_HELD));
+        }
+        if source.enchanted && enchanted_glow {
+            out.push(enchant::halo(source.at, colors, PRIORITY_HELD_ENCHANT));
+        }
+    }
+}
+
 pub(crate) fn emit(host: &dyn ClientHost, out: &mut Vec<lights::Candidate>, colors: bool) {
     let other_players = settings::other_players(host);
     let dropped_items = settings::dropped_items(host);
     let item_frames = settings::item_frames(host);
     let enchanted_glow = settings::enchanted_glow(host);
+    let local = host.local_player().map(|player| player.entity().id());
 
     if let Ok(mobs) = MOBS.lock() {
-        for source in mobs.iter() {
-            if is_local(host, source.id) { continue; }
-            if source.is_player && !other_players { continue; }
-            if let Some(profile) = source.profile {
-                out.push(lights::profile(source.at, profile, colors, PRIORITY_HELD));
-            }
-            if source.enchanted && enchanted_glow {
-                out.push(enchant::halo(source.at, colors, PRIORITY_HELD_ENCHANT));
-            }
-        }
+        emit_mobs(&mobs, local, other_players, enchanted_glow, colors, out);
     }
 
     if dropped_items
@@ -205,6 +216,28 @@ mod tests {
         assert!(!mobs[1].is_player);
         assert!(mobs[1].enchanted);
         assert_eq!(mobs[1].profile, None);
+    }
+
+    #[test]
+    fn emit_mobs_compares_the_local_id_without_resolving_every_source() {
+        let mobs = [
+            HeldLight { id: 1, profile: Some(TORCH), enchanted: false, at: [0.0, 64.0, 0.0], is_player: true },
+            HeldLight { id: 2, profile: Some(TORCH), enchanted: false, at: [4.0, 64.0, 0.0], is_player: true },
+            HeldLight { id: 3, profile: Some(TORCH), enchanted: false, at: [8.0, 64.0, 0.0], is_player: false },
+        ];
+
+        let mut with_players = Vec::new();
+        emit_mobs(&mobs, Some(1), true, false, true, &mut with_players);
+        assert_eq!(with_players.len(), 2);
+        assert!(with_players.iter().all(|light| light.rgb == TORCH.rgb));
+
+        let mut without_players = Vec::new();
+        emit_mobs(&mobs, Some(1), false, false, true, &mut without_players);
+        assert_eq!(without_players.len(), 1);
+
+        let mut no_local_player = Vec::new();
+        emit_mobs(&mobs, None, true, false, true, &mut no_local_player);
+        assert_eq!(no_local_player.len(), 3);
     }
 
     #[test]

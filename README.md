@@ -8,8 +8,8 @@ Companion shader repo: https://github.com/netfeez/aura-bloom-shader
 
 ## Installation
 
-Download `netfeez_aurora_lights-0.1.3.hmod` and its `.minisig` from the
-[v0.1.3 release](https://github.com/NetFeez/aura-lights-mod/releases/tag/v0.1.3). You can also add
+Download `netfeez_aurora_lights-0.1.4.hmod` and its `.minisig` from the
+[v0.1.4 release](https://github.com/NetFeez/aura-lights-mod/releases/tag/v0.1.4). You can also add
 this repository's URL in the launcher's **Add a native mod from GitHub** field: native mods are the
 only kind that field accepts.
 
@@ -20,17 +20,18 @@ The mod id is `netfeez_aurora_lights`.
 
 ### Which Horizon build
 
-Version 0.1.3 is pinned to Horizon `f037744a79f9982c47876f49c5a3067279f88706` and Mixins
+Version 0.1.4 is pinned to Horizon `f037744a79f9982c47876f49c5a3067279f88706` and Mixins
 `e59da9094f0c2fdda6c627fe9eff22dec6a906f0`: the **Nov 21, 16:57 UTC Nightly**. If the launcher
 says "Made for the Nov 21 update; you play the Nov 20 update", you are on an older Nightly; use the
 [v0.1.0 release](https://github.com/NetFeez/aura-lights-mod/releases/tag/v0.1.0), which is pinned to
 the Nov 20 build. The launcher can build a native mod for another build when the API surface it uses
 has not changed, but using the matching version avoids the warning.
 
-Version 0.1.3 also balances overlapping light sources: instead of adding up at the same spot, the
+Version 0.1.4 also balances overlapping light sources: instead of adding up at the same spot, the
 emitted lights are scaled so the result stays close to the brightest source, with each light keeping
 its own colour, radius and position. A faint enchanted halo no longer dims nearby frames or dropped
-items, and a weaker held light no longer flattens a brighter one.
+items, and a weaker held light no longer flattens a brighter one. The local player's entity id is read
+once per frame instead of resolving every cached mob, so crowded servers stay linear.
 
 ## Settings
 
